@@ -19,18 +19,26 @@ export class SearchPage implements OnInit {
   selectedLocation: Location
   myControl = new FormControl()
 
+
   ngOnInit(): void {
     let locationKey = '215854'
-    this._activatedRoute.paramMap.subscribe(params => {
+    this._activatedRoute.paramMap.subscribe((params) => {
+
       if (params["params"]['locationKey'])
         locationKey = params["params"]['locationKey']
-      this._locationService.getLocationByKey(locationKey).subscribe(data => this.selectedLocation = data)
-    })
+
+      this._locationService.getLocationByKey(locationKey).subscribe(data => {
+        this.selectedLocation = data
+      });
+
+    });
   }
+
 
   onKeyUp(val: string): void {
     this._locationService.getAutocompleteLocation(val).subscribe(data => this.result = data)
   }
+
 
   onOptionClick(selectedLoc: Location) {
     this.result = []

@@ -3,7 +3,6 @@ import { WeatherService } from '../../../../core/services/weather.service';
 import { Location } from '../../../../shared/models/location.model';
 import { Forecast } from '../../../../shared/models/forecast.model';
 import { CurrentWeather } from '../../../../shared/models/currentWeather.model';
-import { LocationService } from '../../../../core/services/location.service';
 import { FavoritesService } from '../../../../core/services/favorites.service';
 
 @Component({
@@ -22,26 +21,40 @@ export class CityWeatherComponent implements OnInit {
   @Input()
   set CurrentLocation(location: Location) {
     this.currentLocation = location
-    this._weatherService.getCurrentWeather(this.currentLocation.Key).subscribe(data => { this.CurrentWeather = data; console.log("currentweather", data) }, err => alert(err + "error in current weather"));
-    this._weatherService.getForecast(this.currentLocation.Key).subscribe(data => this.Forecast = data)
+
+    this._weatherService.getCurrentWeather(this.currentLocation.Key).subscribe(data => {
+      this.CurrentWeather = data;
+      console.log("currentweather", data)
+    },
+      err => console.log(err)
+    );
+
+    this._weatherService.getForecast(this.currentLocation.Key).subscribe(data => {
+      this.Forecast = data
+    });
   }
+
 
   set Forecast(_forcast: Forecast) {
     this.forecast = _forcast
   }
 
+
   get Forecast(): Forecast {
     return this.forecast
   }
+
 
   set CurrentWeather(_weather: CurrentWeather) {
     this.currentWeather = _weather
     this.temperatureString = this._weatherService.getTemperatureString(this.currentWeather)
   }
 
+
   get CurrentWeather(): CurrentWeather {
     return this.currentWeather
   }
+
 
   addDays(i: number): Date {
     let newdate = new Date()
@@ -49,12 +62,16 @@ export class CityWeatherComponent implements OnInit {
     return newdate
   }
 
+
   imageSrc(icon: Number): string {
     return "../../../../../assets/weatherIcons/" + icon + ".svg"
   }
+
+
   isfavorite(): boolean {
     return this._favoritesService.getFavorites().filter(e => e.LocalizedName == this.currentLocation.LocalizedName).length > 0
   }
+
 
   onClickFavorite() {
     if (this.isfavorite())
@@ -63,9 +80,11 @@ export class CityWeatherComponent implements OnInit {
       this._favoritesService.addToFavorites(this.currentLocation)
   }
 
+
   ngOnInit(): void {
     this._weatherService.temperatureUnitChanged.subscribe(() => {
       this.temperatureString = this._weatherService.getTemperatureString(this.currentWeather)
-    })
+    });
   }
+
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FavoritesService } from '../../../../core/services/favorites.service';
 import { WeatherService } from '../../../../core/services/weather.service';
@@ -25,14 +25,14 @@ export class FavoritesPage implements OnInit {
         this.weatherList.push(data)
       }
         , erro => console.log(erro))
-    })
+    });
   }
 
   onClickFavorite(locationKey: string) {
     this._router.navigate(['/search', { "locationKey": locationKey }])
   }
 
- onClickDelete(key:string){
+  onClickDelete(key: string) {
     this._favoritesService.removeFromFavorites(key)
   }
 
