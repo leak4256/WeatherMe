@@ -58,23 +58,26 @@
 }
 
 #hiddenToolbar{
-  display: none;
+    display: none;
 }
 
 @media only screen and (max-width: 600px) {
-  #hiddenToolbar {
-    display:inherit;
-    height: 50px;
-    background: #54ca7a;
-  }
-  #sidenav-container >{
-    display: none;
-  }
-  #sidenav-container {
-    display: none;
-  }
+    #hiddenToolbar {
+        display:inherit;
+        height: 50px;
+        background: #54ca7a;
+    }
+
+    #sidenav-container >{
+        display: none;
+    }
+
+    #sidenav-container {
+        display: none;
+    }
+
 }
 
 #dark-mode{
-background-color: black !important;
+    background-color: black !important;
 }
