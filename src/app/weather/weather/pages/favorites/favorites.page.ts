@@ -12,7 +12,8 @@ import { Location } from '../../../../shared/models/location.model'
 })
 
 export class FavoritesPage implements OnInit {
-  constructor(private _favoritesService: FavoritesService, private _router: Router, private _weatherService: WeatherService) { }
+  constructor(private _favoritesService: FavoritesService, private _router: Router, private _weatherService: WeatherService) {
+  }
 
   favorites: Location[]
   weatherList: CurrentWeather[] = []
@@ -20,6 +21,7 @@ export class FavoritesPage implements OnInit {
 
   ngOnInit(): void {
     this.favorites = this._favoritesService.getFavorites()
+
     this.favorites.forEach(f => {
       this._weatherService.getCurrentWeather(f.Key).subscribe(data => {
         this.weatherList.push(data)
@@ -28,13 +30,16 @@ export class FavoritesPage implements OnInit {
     });
   }
 
+
   onClickFavorite(locationKey: string) {
     this._router.navigate(['/search', { "locationKey": locationKey }])
   }
 
+
   onClickDelete(key: string) {
     this._favoritesService.removeFromFavorites(key)
   }
+
 
   temperatureString(i: number): string {
     return this._weatherService.getTemperatureString(this.weatherList[i])
