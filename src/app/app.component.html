@@ -1,4 +1,5 @@
 <div class="app-wrapper" id="{{isDarkTheme?'dark-mode':''}}">
+
   <div id="sidenav-container">
     <h1>WeatherMe</h1>
     <div class="link-wrapper">
@@ -17,20 +18,18 @@
   </div>
 
   <div id="content-wrapper">
+
     <!-- This menue div is displayed on a screen of size 600px and below-->
     <mat-toolbar id="hiddenToolbar">
       <mat-toolbar-row>
-        <!-- <button mat-icon-button>
-          <mat-icon id='menuIcon'>menu</mat-icon>
-        </button> -->
         <span>WeatherMe</span>
         <div>
-        <a href="#" routerLink="/search" mat-button>Search</a>
-        <a href="#" routerLink="/favorites" mat-button>Favorites</a>
-      </div>
+          <a href="#" routerLink="/search" mat-button>Search</a>
+          <a href="#" routerLink="/favorites" mat-button>Favorites</a>
+        </div>
       </mat-toolbar-row>
-      
     </mat-toolbar>
+
     <button (click)="this.isDarkTheme=!this.isDarkTheme">dark/light</button>
     <router-outlet></router-outlet>
   </div>
