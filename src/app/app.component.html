@@ -1,0 +1,38 @@
+<div class="app-wrapper" id="{{isDarkTheme?'dark-mode':''}}">
+  <div id="sidenav-container">
+    <h1>WeatherMe</h1>
+    <div class="link-wrapper">
+      <mat-icon svgIcon="SEARCH"></mat-icon>
+      <p routerLink="/search">Search</p>
+    </div>
+
+    <div class="link-wrapper" mat-button>
+      <mat-icon svgIcon="EMPTY_FAVORITE"></mat-icon>
+      <p routerLink="/favorites">Favorites</p>
+    </div>
+
+    <mat-slide-toggle id="slide-toggle" (click)="changeTemperatureUnit()">
+      <label> Temperature in Fahrenheit </label>
+    </mat-slide-toggle>
+  </div>
+
+  <div id="content-wrapper">
+    <!-- This menue div is displayed on a screen of size 600px and below-->
+    <mat-toolbar id="hiddenToolbar">
+      <mat-toolbar-row>
+        <!-- <button mat-icon-button>
+          <mat-icon id='menuIcon'>menu</mat-icon>
+        </button> -->
+        <span>WeatherMe</span>
+        <div>
+        <a href="#" routerLink="/search" mat-button>Search</a>
+        <a href="#" routerLink="/favorites" mat-button>Favorites</a>
+      </div>
+      </mat-toolbar-row>
+      
+    </mat-toolbar>
+    <button (click)="this.isDarkTheme=!this.isDarkTheme">dark/light</button>
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

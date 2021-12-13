@@ -1,0 +1,9 @@
+<div class="container">
+  <input class="form-control" id="myInput" type="text" #search placeholder="Search.." [formControl]="myControl" (keyup)="onKeyUp(search.value)">
+  <br>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of result" (click)='onOptionClick(item)' >{{item.LocalizedName}}</li>
+  </ul>  
+</div>
+
+<app-city-weather *ngIf="selectedLocation" [CurrentLocation]='selectedLocation'></app-city-weather>

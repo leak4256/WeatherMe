@@ -1,0 +1,28 @@
+  .card{
+    border-radius: 0px;
+  }
+  
+  h1{
+    font-size: xx-large;
+  }
+  
+  .carousel-indicators li {
+    background-color: #282828;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  section{
+    margin-top:50px;
+  }
+
+  #image-div img{
+    animation-name: example;
+    animation-duration: 2s;
+  }
+  
+  @keyframes example {
+    from {width: 20px;}
+    to {width: 150px;}
+  }

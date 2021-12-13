@@ -1,0 +1,70 @@
+
+<section class="vh-100">
+  <div class="container py-6 h-100">
+
+    <div class="row d-flex h-100">
+      <div class="col-md-9 col-lg-7 col-xl-8">
+
+        <div class="card mb-4 gradient-custom">
+          <div class="card-body p-4">
+
+            <div id="demo1" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ul class="carousel-indicators mb-0">
+                <li data-target="#demo1" data-slide-to="0" ></li>
+                <li data-target="#demo1" data-slide-to="1"></li>
+                <li data-target="#demo1" data-slide-to="2"></li>
+              </ul>
+              <!-- Carousel inner -->
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="d-flex justify-content-between mb-4 pb-2">
+                    <div style="margin: 20px;">
+                      <h1 class="display-1"><strong
+                          *ngIf="CurrentWeather">{{temperatureString}}</strong></h1>
+                      <h2 class="display-2">{{currentLocation.LocalizedName}}, {{currentLocation.Country.LocalizedName}}</h2>
+                      <p class="text-muted mb-0" *ngIf="CurrentWeather">{{CurrentWeather[0].WeatherText}}</p>
+                      
+                      <button mat-icon-button  aria-label="button-icon" (click)="onClickFavorite()"  [color]="isfavorite()?'primary':'warn'">
+                        <mat-icon >favorite</mat-icon>
+                      </button>
+                  
+                    </div>
+                    <div id="image-div">
+                      <img src="{{imageSrc(CurrentWeather[0].WeatherIcon)}}"
+                        width="150px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body p-4">
+
+            <div id="demo3" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="d-flex justify-content-around text-center mb-4 pb-3 pt-2 ">
+                    <div class="flex-column" *ngFor="let weathDay of Forecast?.DailyForecasts; let i=index">
+                      <p class="mb-0"><strong>{{ addDays(i+1) | date :'EEEE'}} </strong></p>
+                      <img src="{{imageSrc(weathDay.Day.Icon)}}" alt="Bootstrap" width="40" height="40">
+                      <p class="small"><strong>{{weathDay.Temperature.Minimum.Value}}°{{weathDay.Temperature.Maximum.Unit}}
+                          {{weathDay.Temperature.Maximum.Value}}°{{weathDay.Temperature.Maximum.Unit}}</strong></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

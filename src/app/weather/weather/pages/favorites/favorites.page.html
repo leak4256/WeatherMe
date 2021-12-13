@@ -1,0 +1,14 @@
+<div class="favorites-list">
+    <div class="item-wrap" *ngFor="let item of favorites;let i=index" (click)='onClickFavorite(item.Key)'>
+        <mat-card>
+            <button mat-icon-button (click)="onClickDelete(item.Key)">
+                <mat-icon >delete</mat-icon>
+              </button>
+            <mat-card-content>
+                <mat-card-title>{{item.LocalizedName}}:{{item.Key}}</mat-card-title>
+                <mat-card-subtitle>{{temperatureString(i)}}</mat-card-subtitle>
+            </mat-card-content>
+        </mat-card>
+        <mat-divider></mat-divider>
+    </div>
+</div>
