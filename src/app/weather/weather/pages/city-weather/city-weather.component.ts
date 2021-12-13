@@ -84,6 +84,9 @@ export class CityWeatherComponent implements OnInit {
   ngOnInit(): void {
     this._weatherService.temperatureUnitChanged.subscribe(() => {
       this.temperatureString = this._weatherService.getTemperatureString(this.currentWeather)
+      this._weatherService.getForecast(this.currentLocation.Key).subscribe((data) => {
+        this.Forecast = data;
+      });
     });
   }
 
