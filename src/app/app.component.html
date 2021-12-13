@@ -1,4 +1,4 @@
-<div class="app-wrapper" id="{{isDarkTheme?'dark-mode':''}}">
+<div class="app-wrapper">
 
   <div id="sidenav-container">
     <h1>WeatherMe</h1>
@@ -30,7 +30,7 @@
       </mat-toolbar-row>
     </mat-toolbar>
 
-    <button (click)="this.isDarkTheme=!this.isDarkTheme">dark/light</button>
+    <button (click)='changeTheme()'>dark/light</button>
     <router-outlet></router-outlet>
   </div>
 

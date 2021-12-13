@@ -13,8 +13,6 @@ export class AppComponent implements OnInit {
 
   constructor(private loaderService: LoaderService, private weatherService: WeatherService) { }
 
-  isDarkTheme: boolean = false;
-
   ngOnInit() {
     this.loaderService.stateChange.subscribe((loaderState) => {
       setTimeout(() => {
@@ -26,5 +24,9 @@ export class AppComponent implements OnInit {
   changeTemperatureUnit() {
     this.weatherService.isMetric = !this.weatherService.isMetric;
     this.weatherService.temperatureUnitChanged.next();
+  }
+
+  changeTheme(){
+    document.body.style.backgroundColor = document.body.style.backgroundColor=='black'?'white':'black'
   }
 }
